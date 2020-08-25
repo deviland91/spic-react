@@ -1,19 +1,16 @@
 import React from 'react';
-import { fade, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import SettingsIcon from '@material-ui/icons/Settings';
-import MoreIcon from '@material-ui/icons/MoreVert';
-import { Grid } from '@material-ui/core';
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -30,8 +27,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   subtitle: {
+    flexGrow: 0.05,
     display: 'none',
-    width: '15%',
+
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },

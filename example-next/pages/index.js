@@ -10,6 +10,7 @@ import Copyright from '../src/Copyright';
 import Sidebar from '../src/Sidebar';
 import Paper from '@material-ui/core/Paper';
 import Appbar from '../src/Appbar';
+import Bannerbar from '../src/Bannerbar.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,9 +18,8 @@ const useStyles = makeStyles((theme) => ({
       flexWrap: "wrap",
       "& > *": {
         margin: theme.spacing(1),
-        width: "20%",
-        height: "100%"
-      }
+      },
+      backgroundColor: "white"
   },
   control: {
     padding: theme.spacing(2),
@@ -31,18 +31,18 @@ export default function Index() {
   const classes = useStyles();
 
   return (
-    <div >
+    <div>
       <Appbar />
       <div className={classes.root}>
-        <Paper elevation={0}> 
-          Manuel 
-        </Paper>
-        <Paper> 
-          <Sidebar /> 
-        </Paper>
-        <Paper elevation={2} />
+        
+        <Grid container direction="row" alignItems="stretch" justify="space-evenly" bgColor="white">
+          <Grid item xs={12} sm={12}>
+            <Sidebar />
+          </Grid>
+
+        </Grid>
       </div>
     </div>
-    
+      
   );
 }
