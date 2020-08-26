@@ -10,7 +10,7 @@ import { Link } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
-  
+
   menuButton: {
     marginRight: theme.spacing(0),
   },
@@ -36,26 +36,26 @@ export default function Bannerbar() {
   const menuId = 'primary-search-account-menu';
 
   return (
-      <Container maxWidth="sm">
-        <IconButton aria-label="settings" color="primary">
-          <Badge color="primary">
-            <DashboardIcon />
-            <Link>Dashboard</Link>
-          </Badge>
-        </IconButton>
-        <IconButton aria-label="settings" color="primary">
-          <Badge color="primary">
-            <DashboardIcon />
-            <Link>Dashboard</Link>
-          </Badge>
-        </IconButton>
-        <IconButton aria-label="settings" color="primary">
-          <Badge color="primary">
-            <DashboardIcon />
-            <Link>Dashboard</Link>
-          </Badge>
-        </IconButton>
-      </Container>
+    <Container maxWidth="sm">
+      <IconButton aria-label="settings" color="primary">
+        <Badge color="primary">
+          <DashboardIcon />
+          <Link>Dashboard</Link>
+        </Badge>
+      </IconButton>
+      <IconButton aria-label="settings" color="primary">
+        <Badge color="primary">
+          <DashboardIcon />
+          <Link>Dashboard</Link>
+        </Badge>
+      </IconButton>
+      <IconButton aria-label="settings" color="primary">
+        <Badge color="primary">
+          <DashboardIcon />
+          <Link>Dashboard</Link>
+        </Badge>
+      </IconButton>
+    </Container>
 
   );
 }

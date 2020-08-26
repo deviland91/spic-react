@@ -81,7 +81,7 @@ export default function PrimarySearchAppBar() {
             Event OS
           </Typography>
           <Typography className={classes.subtitle} variant="body1" Wrap >
-            Plataforma <br/>de Gestão de Convidados
+            Plataforma <br />de Gestão de Convidados
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

@@ -1,116 +1,134 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Dashboard from '@material-ui/icons/Dashboard';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import UpdateIcon from '@material-ui/icons/Update';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+import PostAddIcon from '@material-ui/icons/PostAdd';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-  
-};
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
+import clsx from 'clsx';
 
 function a11yProps(index) {
   return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`
+    id: `vertical-window-${index}`,
+    'aria-controls': `vertical-infowindow-${index}`
   };
 }
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    paddingLeft: "10px",
+    width: '100%',
+    maxWidth: 360,
     backgroundColor: theme.palette.background.paper,
-    display: 'flex',
-    height: 700,
-    alignItems: "center"
   },
-  tabs: {
-    overflow: "visible",
+  item: {
+    paddingTop: 1,
+    paddingBottom: 1,
+    color: "lightgrey",
+    '&:hover,&:focus': {
+      backgroundColor: 'rgba(255, 255, 255, 0.08)',
+      color: "#009be5",
+    },
   },
-  newIndicator: {
-    left: 0
+  itemCategory: {
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(2),
   },
-  newTabWrapper: {
-    flexDirection: "row"
+  subSubTitle: {
+    fontWeight: "bold",
+    paddingLeft: "10px",
   }
 }));
 
 export default function Sidebar() {
 
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
   };
 
   return (
-    <div className={classes.root} >
-      <Tabs
-        classes={{indicator: classes.newIndicator}}
-        centered="true"
-        orientation="vertical"
-        variant="fullWidth"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-        textColor="primary"
-        mr={8}
-      >
-        <Tab classes={{wrapper: classes.newTabWrapper}} icon={<Dashboard />} label="Item One" {...a11yProps(0)} />
-        <Tab classes={{wrapper: classes.newTabWrapper}} icon={<Dashboard />} label="Item Two" {...a11yProps(1)} />
-        <Tab classes={{wrapper: classes.newTabWrapper}} icon={<Dashboard />} label="Item Three" {...a11yProps(2)} />
-        <Box borderTop={1} pt={7} mt={5} mb={2}>
-          <Typography variant="subtitle1"> A Decorrer</Typography>
-        </Box>
-        
-        <Tab classes={{wrapper: classes.newTabWrapper}} icon={<Dashboard />} label="Item Four" {...a11yProps(3)} />
-        <Tab classes={{wrapper: classes.newTabWrapper}} icon={<Dashboard />} label="Item Five" {...a11yProps(4)} />
-    </Tabs>
-    <TabPanel value={value} index={0}>
-      Item One
-    </TabPanel>
-    <TabPanel value={value} index={1}>
-      Item Two
-    </TabPanel>
-    <TabPanel value={value} index={2}>
-      Item Three
-    </TabPanel>
-    
-    <TabPanel value={value} index={3}>
-      Item Four
-    </TabPanel>
+    <div className={classes.root}>
 
-    <TabPanel value={value} index={4}>
-      Item Five
-    </TabPanel>
-  </div>
+      <List component="nav" aria-label="main dashboard">
+        <ListItem
+          button
+          selected={selectedIndex === 0}
+          onClick={(event) => handleListItemClick(event, 0)}
+          className={clsx(classes.item, classes.itemCategory)}
+        >
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <ListItemText primary="DASHBOARD" />
+        </ListItem>
+        <ListItem
+          button
+          selected={selectedIndex === 1}
+          onClick={(event) => handleListItemClick(event, 1)}
+          className={clsx(classes.item, classes.itemCategory)}
+        >
+          <ListItemIcon>
+            <ListAltIcon />
+          </ListItemIcon>
+          <ListItemText primary="LISTAS DE CONVIDADOS" />
+        </ListItem>
+        <ListItem
+          button
+          selected={selectedIndex === 2}
+          onClick={(event) => handleListItemClick(event, 2)}
+          className={clsx(classes.item, classes.itemCategory)}
+          autoFocus
+        >
+          <ListItemIcon>
+            <PostAddIcon />
+          </ListItemIcon>
+          <ListItemText primary="CAMPANHAS" />
+        </ListItem>
+      </List>
+      <Box mb={8}>
+        <Divider />
+      </Box>
+
+      <Typography className={classes.subSubTitle}>
+        A Decorrer
+      </Typography>
+      <List component="nav" aria-label="secondary mailbox folder" >
+        <ListItem
+          button
+          selected={selectedIndex === 3}
+          onClick={(event) => handleListItemClick(event, 3)}
+          className={clsx(classes.item, classes.itemCategory)}
+        >
+          <ListItemIcon>
+            <UpdateIcon />
+          </ListItemIcon>
+          <ListItemText primary="NEWSLETTER LISBOA L1" />
+        </ListItem>
+        <ListItem
+          button
+          selected={selectedIndex === 4}
+          onClick={(event) => handleListItemClick(event, 4)}
+          className={clsx(classes.item, classes.itemCategory)}
+        >
+          <ListItemIcon>
+            <UpdateIcon />
+          </ListItemIcon>
+          <ListItemText primary="SMS LISBOA L2" />
+        </ListItem>
+      </List>
+    </div>
 
   );
 }
