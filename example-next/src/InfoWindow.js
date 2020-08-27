@@ -1,22 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
+import { Paper, Grid, Toolbar, AppBar } from '@material-ui/core/';
+import { Button, TextField } from '@material-ui/core/';
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
-import SearchIcon from '@material-ui/icons/Search';
-import RefreshIcon from '@material-ui/icons/Refresh';
-import Tab from '@material-ui/core/Tab';
-import Tabs from '@material-ui/core/Tabs';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Search, Refresh, MoreVert } from '@material-ui/icons/';
+import { Tab, Tabs, Menu, MenuItem } from '@material-ui/core/';
+import FormBase from '../src/FormBase';
 
 const lightColor = 'rgba(255, 255, 255, 0.7)';
 const options = [
@@ -33,10 +25,10 @@ InfoWindow.propTypes = {
   value: PropTypes.any.isRequired,
   classes: PropTypes.object.isRequired,
 };
+
 const styles = (theme) => ({
   paper: {
-    maxWidth: 936,
-    margin: 'auto',
+    margin: '40px auto',
     overflow: 'hidden',
   },
   searchBar: {
@@ -82,46 +74,47 @@ function InfoWindow(props) {
         color="primary"
         position="static"
         elevation={0}
+
       >
         <Toolbar>
-          <Grid container alignItems="center" spacing={1}>
-            <Grid item xs>
-              <Typography color="inherit" variant="h5" component="h1">
+          <Grid container alignItems="center" spacing={10} >
+            <Grid item xs margin="10px">
+              <Typography color="inherit" variant="body2" component="h2">
                 STATUS
-                <br />
-                NENHUMA CAMPANHA A DECORRER
                 </Typography>
+              <Typography color="inherit" variant="h5" component="h2">
+                NENHUMA CAMPANHA <br />A DECORRER
+                </Typography>
+
             </Grid>
-            <Grid item>
-              <div>
-                <IconButton
-                  aria-label="more"
-                  aria-controls="long-menu"
-                  aria-haspopup="true"
-                  onClick={handleClick}
-                >
-                  <MoreVertIcon />
-                </IconButton>
-                <Menu
-                  id="long-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={open}
-                  onClose={handleClose}
-                  PaperProps={{
-                    style: {
-                      maxHeight: ITEM_HEIGHT * 4.5,
-                      width: '20ch',
-                    },
-                  }}
-                >
-                  {options.map((option) => (
-                    <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-                      {option}
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </div>
+            <Grid item >
+              <IconButton
+                aria-label="more"
+                aria-controls="long-menu"
+                aria-haspopup="true"
+                onClick={handleClick}
+              >
+                <MoreVert />
+              </IconButton>
+              <Menu
+                id="long-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={open}
+                onClose={handleClose}
+                PaperProps={{
+                  style: {
+                    maxHeight: ITEM_HEIGHT * 4.5,
+                    width: '20ch',
+                  },
+                }}
+              >
+                {options.map((option) => (
+                  <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
+                    {option}
+                  </MenuItem>
+                ))}
+              </Menu>
             </Grid>
           </Grid>
         </Toolbar>
@@ -142,9 +135,9 @@ function InfoWindow(props) {
               <Tab textColor="inherit" label="Usage" />
             </Tabs>
           </Grid>
- 
+
           <Grid item >
-            <SearchIcon className={classes.block} color="inherit" />
+            <Search className={classes.block} color="inherit" />
           </Grid>
           <Grid item xs>
             <TextField
@@ -158,12 +151,9 @@ function InfoWindow(props) {
           </Grid>
         </Grid>
       </AppBar>
-      <Paper className={classes.paper}>
-
+      <Paper className={classes.paper} elevation={0}>
         <div className={classes.contentWrapper}>
-          <Typography color="textSecondary" align="center">
-            Form goes here
-            </Typography>
+              <FormBase />
         </div>
       </Paper>
     </React.Fragment>
