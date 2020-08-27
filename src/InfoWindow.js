@@ -44,7 +44,7 @@ const styles = (theme) => ({
     marginRight: theme.spacing(1),
   },
   contentWrapper: {
-    margin: '40px 16px',
+    margin: '10px 16px',
   },
   secondaryBar: {
     zIndex: 0,
@@ -71,7 +71,8 @@ function InfoWindow(props) {
       <AppBar
         component="div"
         className={classes.secondaryBar}
-        color="primary"
+        color="white"
+        textColor="#009be5"
         position="static"
         elevation={0}
 
@@ -122,17 +123,18 @@ function InfoWindow(props) {
       <AppBar
         component="div"
         className={classes.secondaryBar}
-        color="primary"
+        color="white"
         position="static"
+        textColor="#009be5"
         elevation={0}
       >
         <Grid container alignItems="center" >
           <Grid item>
-            <Tabs value={0} textColor="inherit">
-              <Tab textColor="inherit" label="Users" />
-              <Tab textColor="inherit" label="Sign-in method" />
-              <Tab textColor="inherit" label="Templates" />
-              <Tab textColor="inherit" label="Usage" />
+            <Tabs value={0} textColor="primary" indicatorColor="primary">
+              <Tab label="NEWSLETTER" />
+              <Tab label="SMS" />
+              <Tab label="A DECORRER" />
+              <Tab label="CONCLUÍDAS" />
             </Tabs>
           </Grid>
 
