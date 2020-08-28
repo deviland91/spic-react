@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import { Paper, Grid, Toolbar, AppBar } from '@material-ui/core/';
 import { Button, TextField } from '@material-ui/core/';
-import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
 import { withStyles } from '@material-ui/core/styles';
 import { Search, Refresh, MoreVert } from '@material-ui/icons/';

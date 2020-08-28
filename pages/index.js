@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { createMuiTheme, ThemeProvider, withStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Hidden from '@material-ui/core/Hidden';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
 import Sidebar from '../src/Sidebar';
 import InfoWindow from '../src/InfoWindow';
 import Appbar from '../src/Appbar';
+import Footer from '../src/Footer';
+import { Typography } from '@material-ui/core';
 
 let theme = createMuiTheme({
     palette: {
@@ -149,7 +149,9 @@ function Paperbase(props) {
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
-
+    const leDate = new Date();
+    const dayMonth = leDate.getDate() + "." + leDate.getMonth() + "." + leDate.getFullYear();
+    const hourMinute = leDate.getHours() +":" + leDate.getMinutes() +"h";
     return (
         <ThemeProvider theme={theme}>
             <Appbar />
@@ -165,16 +167,21 @@ function Paperbase(props) {
                             open={mobileOpen}
                             onClose={handleDrawerToggle}
                         />
+                        Pipocas
                     </Hidden>
                     <Hidden xsDown implementation="css" >
                         <Sidebar PaperProps={{ style: { width: drawerWidth } }} />
                     </Hidden>
+                    <Typography variant="caption">Último log in: {dayMonth} . {hourMinute}</Typography>
                 </nav>
                 <div className={classes.app}>
 
                     <main className={classes.main}>
                         <InfoWindow />
                     </main>
+                    <footer className={classes.footer}>
+                        <Footer />
+                    </footer>
                 </div>
             </div>
         </ThemeProvider>

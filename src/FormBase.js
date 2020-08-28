@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Container, RadioGroup, Radio, FormControlLabel, makeStyles, Divider, Switch } from '@material-ui/core';
-import { PostAdd, MoreVert, ControlPointSharp } from '@material-ui/icons/';
+import { Grid, Typography, Radio, makeStyles, Divider, Switch } from '@material-ui/core';
+import { PostAdd, MoreVert } from '@material-ui/icons/';
 
 import { TextField, List, ListItem, IconButton, Menu, MenuItem } from '@material-ui/core';
 import Button from "../controls/Button";
@@ -46,19 +46,19 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 15,
         fontWeight: "bold",
     },
+    specialInput: {
+        width: "0px",
+        height: "0px",
+    },
+    specialImage: {
+        filter: "brightness(1.8) grayscale(1) opacity(.7)"
+    }
 }));
 
 export default function InfoWindow(props) {
     const [values, setValues] = useState(initialValues);
     const classes = useStyles();
 
-    const handleChange = e => {
-        const { name, value } = e.target
-        setValues({
-            ...values,
-            [name]: value
-        })
-    }
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -73,7 +73,7 @@ export default function InfoWindow(props) {
     return (
         <React.Fragment>
             <Grid>
-                <Grid style={{ textAlign: "right" }}>
+                <Grid container justify="flex-end" >
                     <Grid item>Mode<Switch color="primary" /></Grid>
                 </Grid>
                 <Grid item xs={12} sm={2}>
@@ -85,7 +85,6 @@ export default function InfoWindow(props) {
                         NEWSLETTER
                 </Typography>
                 </Grid>
-
             </Grid>
             <form>
                 <Grid container>
@@ -99,24 +98,30 @@ export default function InfoWindow(props) {
                         PROGRAMAÇÃO DO ENVIO
                     </Grid>
                 </Grid>
-                <Grid container style={{ textAlign: "center" }} >
-                    <Grid item xs={12} sm={5}>
-                        <Grid item xs={12} sm={4}>
-                            <input type="radio" name="template" value="0" checked />
-                            <img cursor="pointer" src="http://placehold.it/40x60/0bf/fff&text=A" />
+                <Grid container justify="center" spacing={2}>
+                    <Grid item xs={4} container justify="center" alignContent="center" spacing={2}>
+                        <Grid item>
+                            <input id="template1" className={classes.specialInput} type="radio" name="template" value="0" checked />
+                            <label className={classes.specialImage} for="template1">
+                                <img cursor="pointer" src="http://placehold.it/60x90/0bf/fff&text=A" />
+                            </label>
                         </Grid>
 
-                        <Grid item xs={12} sm={4}>
-                            <input type="radio" name="template" value="1" />
-                            <img cursor="pointer" src="http://placehold.it/40x60/0bf/fff&text=B" />
+                        <Grid item >
+                            <input id="template2" className={classes.specialInput} type="radio" name="template" value="1" checked />
+                            <label className={classes.specialImage} for="template2">
+                                <img cursor="pointer" src="http://placehold.it/60x90/0bf/fff&text=B" />
+                            </label>
                         </Grid>
 
-                        <Grid item xs={12} sm={4}>
-                            <input type="radio" name="template" value="2" />
-                            <img cursor="pointer" src="http://placehold.it/40x60/0bf/fff&text=C" />
+                        <Grid item >
+                            <input id="template3" className={classes.specialInput} type="radio" name="template" value="2" checked />
+                            <label className={classes.specialImage} for="template3">
+                                <img cursor="pointer" src="http://placehold.it/60x90/0bf/fff&text=C" />
+                            </label>
                         </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={4}>
+                    <Grid item xs={5}>
                         <List>
                             <Divider />
                             <ListItem disableGutters>
@@ -214,7 +219,7 @@ export default function InfoWindow(props) {
                         </List>
 
                     </Grid>
-                    <Grid item xs={12} sm={3}>
+                    <Grid item xs={3}>
                         <TextField
                             id="dateSchedule"
                             type="date"
@@ -243,7 +248,7 @@ export default function InfoWindow(props) {
                 </Grid>
                 <Grid container justify="flex-end">
 
-                        <Button variant="contained" color="primary" size="large" text="- INICIAR ENVIO" type="submit" />
+                    <Button variant="contained" color="primary" size="large" text="- INICIAR ENVIO" type="submit" />
                 </Grid>
             </form>
         </React.Fragment>
