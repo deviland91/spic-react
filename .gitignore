@@ -16,5 +16,4 @@ yarn-error.log*
 
 # Next.js
 /.next
-node_module/ 
-.next/
+/node_module
