@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "next",
     "build": "npx next build",
-    "start": "npx next start -p $PORT",
+    "start": "npx next start",
     "post-update": "echo \"codesandbox preview only, need an update\" && yarn upgrade --latest"
   }
 }
