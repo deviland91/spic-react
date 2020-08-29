@@ -167,7 +167,6 @@ function Paperbase(props) {
                             open={mobileOpen}
                             onClose={handleDrawerToggle}
                         />
-                        Pipocas
                     </Hidden>
                     <Hidden xsDown implementation="css" >
                         <Sidebar PaperProps={{ style: { width: drawerWidth } }} />
@@ -179,9 +178,6 @@ function Paperbase(props) {
                     <main className={classes.main}>
                         <InfoWindow />
                     </main>
-                    <footer className={classes.footer}>
-                        <Footer />
-                    </footer>
                 </div>
             </div>
         </ThemeProvider>
